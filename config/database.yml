@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
+  host: db
+  port: 5432
+  username: postgres
+  password: db1234
+
+development:
+  <<: *default
+  database: base_graphql_development
+
+test:
+  <<: *default
+  database: base_graphql_test
