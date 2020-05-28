@@ -9,6 +9,8 @@ gem 'search_object_graphql', '0.3.1'
 
 gem 'graphql', '1.9.17'
 
+gem 'jwt'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
 # Use postgres as the database for Active Record
@@ -43,3 +45,5 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'graphiql-rails', group: :development
