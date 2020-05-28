@@ -15,5 +15,5 @@ COPY init.sh /
 RUN chmod +x /init.sh
 ENTRYPOINT [ "/init.sh" ]
 
-EXPOSE 1234
+EXPOSE 3011
 EXPOSE 3000

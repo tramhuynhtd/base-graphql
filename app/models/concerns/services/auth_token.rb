@@ -8,9 +8,9 @@ module Services
 
     def self.verify(token)
       result = JsonWebToken.decode(token)
-      return result[:error] if result[:error]
+      return result if result[:error]
 
-      User.find(result[:ok][:user_id])
+      User.find(result[:user_id])
     end
   end
 

@@ -5,7 +5,7 @@
             "name": "Debug Rails Server",
             "type": "Ruby",
             "request": "attach",
-            "remotePort": "1234",
+            "remotePort": "3011",
             "remoteHost": "0.0.0.0",
             "remoteWorkspaceRoot": "/usr/src/app",
             "cwd": "${workspaceRoot}",

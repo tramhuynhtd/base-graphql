@@ -12,8 +12,8 @@ services:
   web:
     build: .
     ports:
-      - "3000:3000"
-      - "1234:1234"
+      - "3010:3000"
+      - "3011:3011"
     volumes:
       - .:/usr/src/app
     depends_on:

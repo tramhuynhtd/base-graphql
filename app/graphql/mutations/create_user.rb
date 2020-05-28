@@ -6,12 +6,17 @@ module  Mutations
     field :user, Types::UserType, null: false
 
     def resolve(credentials:, name:)
+
+      ::Services::AuthorizeRequest.authentication(context)
+
       user = User.new(
         name: name,
         username: credentials[:username],
         password: credentials[:password]
       )
-      { user: user } if user.save
+
+      return { user: user } if user.save
+
       raise GraphQL::ExecutionError, user.errors.full_messages.join(', ')
     end
   end
