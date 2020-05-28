@@ -6,7 +6,14 @@ module Types
     field :all_users, [UserType], null: false
 
     def all_users
+      ::Services::AuthorizeRequest.authentication(context)
       User.all
+    end
+
+    field :all_posts, [PostType], null: true
+
+    def all_posts
+      Post.all.where(del_flag: false)
     end
   end
 end
