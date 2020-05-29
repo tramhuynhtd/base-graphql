@@ -6,7 +6,7 @@ module Mutations
     field :post, Types::PostType, null: false
 
     def resolve(title:, description:)
-      ::Services::AuthorizeRequest.authentication(context)
+      # ::Services::AuthorizeRequest.authentication(context)
 
       post = Post.new(
         title: title,

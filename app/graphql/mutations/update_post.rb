@@ -7,7 +7,7 @@ module Mutations
     field :post, Types::PostType, null: false
 
     def resolve(id:, title:, description:)
-      ::Services::AuthorizeRequest.authentication(context)
+      # ::Services::AuthorizeRequest.authentication(context)
 
       if title.blank? && description.blank?
         raise GraphQL::ExecutionError, 'There is no field to update'

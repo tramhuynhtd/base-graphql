@@ -7,7 +7,7 @@ module  Mutations
 
     def resolve(credentials:, name:)
 
-      ::Services::AuthorizeRequest.authentication(context)
+      # ::Services::AuthorizeRequest.authentication(context)
 
       user = User.new(
         name: name,
