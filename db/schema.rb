@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_28_105444) do
+ActiveRecord::Schema.define(version: 2020_06_02_025910) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,8 +25,29 @@ ActiveRecord::Schema.define(version: 2020_05_28_105444) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "students", force: :cascade do |t|
     t.string "name"
+    t.boolean "gender"
+    t.datetime "birthday"
+    t.string "class_name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_students_on_user_id"
+  end
+
+  create_table "teachers", force: :cascade do |t|
+    t.string "name"
+    t.boolean "gender"
+    t.datetime "birthday"
+    t.string "teaching_subject"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_teachers_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
@@ -34,4 +55,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_105444) do
   end
 
   add_foreign_key "posts", "users"
+  add_foreign_key "students", "users"
+  add_foreign_key "teachers", "users"
 end

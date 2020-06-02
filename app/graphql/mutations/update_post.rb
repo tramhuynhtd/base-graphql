@@ -6,7 +6,7 @@ module Mutations
 
     field :post, Types::PostType, null: false
 
-    def resolve(id:, title:, description:)
+    def resolve(id:, title:nil, description: nil)
       # ::Services::AuthorizeRequest.authentication(context)
 
       if title.blank? && description.blank?
