@@ -1,16 +1,16 @@
 module  Mutations
   class CreateUser < BaseMutation
     argument :credentials, Types::AuthProviderCredentialsInput, required: true
-    argument :name, String, required: true
+    # argument :name, String, required: true
 
     field :user, Types::UserType, null: false
 
-    def resolve(credentials:, name:)
+    def resolve(credentials:)
 
       # ::Services::AuthorizeRequest.authentication(context)
 
       user = User.new(
-        name: name,
+        # name: name,
         username: credentials[:username],
         password: credentials[:password]
       )

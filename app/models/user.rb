@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   has_many :posts
 
-  validates :name, presence: true
+  has_many :students, as: :information
+
+  has_many :teachers, as: :information
+
+  # validates :name, presence: true
   validates :username, presence: true, uniqueness: true
 end

@@ -16,6 +16,16 @@ module Types
       argument :id, ID, required: true
     end
 
+    field :search, [UserUnion], null: false do
+      argument :text, String, required: true
+    end
+
+    field :all_students, StudentType.connection_type, null: false
+
+    def search(text:)
+      User.where('name LIKE ?', "%#{text}%")
+    end
+
     def all_users
       # ::Services::AuthorizeRequest.authentication(context)
       User.all
@@ -35,6 +45,11 @@ module Types
       User.find_by!(id: id)
     rescue ActiveRecord::RecordNotFound => e
       raise GraphQL::ExecutionError, e
+    end
+
+    def all_students
+      # ::Services::AuthorizeRequest.authentication(context)
+      Student.all
     end
   end
 end
