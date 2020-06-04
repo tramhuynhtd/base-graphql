@@ -23,7 +23,9 @@ module Types
     field :all_students, StudentType.connection_type, null: false
 
     def search(text:)
-      User.where('name LIKE ?', "%#{text}%")
+      teachers = Teacher.where('name LIKE ?', "%#{text}%")
+      students = Student.where('name LIKE ?', "%#{text}%")
+      teachers + students
     end
 
     def all_users

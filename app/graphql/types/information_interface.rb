@@ -7,8 +7,8 @@ module Types
     field :name, String, null: false
     field :gender, GenderEnum, null: false
     # field :gender, Boolean, "This is description for field", null: false
-    field :birthday, GraphQL::Types::ISO8601DateTime, null: false
-    field :user, UserType, null: false
+    # field :birthday, GraphQL::Types::ISO8601DateTime, null: false
+    field :birthday, DateTimeScalar, null: false
 
     # def birthday
     #   # Optional: provide a special implementation of `birthday` here

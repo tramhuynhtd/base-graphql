@@ -11,14 +11,15 @@ module Mutations
 
       user = User.new(
         username: credentials[:username],
-        password: credentials[:password]
+        password: credentials[:password],
+        name: information[:name],
+        gender: information[:gender],
+        birthday: information[:birthday],
+        role: User.roles[:student]
       )
 
       if user.save
         student = Student.create!(
-          name: information[:name],
-          gender: information[:gender],
-          birthday: information[:birthday],
           class_name: class_name,
           user: user
         )

@@ -3,10 +3,12 @@ class User < ApplicationRecord
 
   has_many :posts
 
-  has_many :students, as: :information
+  has_one :student
 
-  has_many :teachers, as: :information
+  has_one :teacher
 
   # validates :name, presence: true
   validates :username, presence: true, uniqueness: true
+
+  enum role: [:admin, :teacher, :student]
 end
