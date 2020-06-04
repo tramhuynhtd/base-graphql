@@ -11,7 +11,8 @@ module Services
       return result if result[:error]
 
       User.find(result[:user_id])
+    rescue ActiveRecord::RecordNotFound
+      { error: 'Invalid token' }
     end
   end
-
 end

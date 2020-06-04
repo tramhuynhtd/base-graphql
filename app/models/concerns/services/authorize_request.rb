@@ -5,7 +5,7 @@ module Services
         raise GraphQL::ExecutionError, 'Authentication required'
       end
 
-      return unless context[:current_user][:error]
+      return context[:current_user] unless context[:current_user][:error]
 
       raise GraphQL::ExecutionError, context[:current_user][:error]
     end

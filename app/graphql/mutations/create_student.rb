@@ -7,28 +7,31 @@ module Mutations
     field :student, Types::StudentType, null: false
 
     def resolve(information:, class_name:, credentials:)
-      # ::Services::AuthorizeRequest.authentication(context)
-
-      user = User.new(
-        username: credentials[:username],
-        password: credentials[:password],
-        name: information[:name],
-        gender: information[:gender],
-        birthday: information[:birthday],
-        role: User.roles[:student]
-      )
-
-      if user.save
-        student = Student.create!(
-          class_name: class_name,
-          user: user
+      current_user = ::Services::AuthorizeRequest.authentication(context)
+      if current_user.admin? || current_user.teacher?
+        user = User.new(
+          username: credentials[:username],
+          password: credentials[:password],
+          name: information[:name],
+          gender: information[:gender],
+          birthday: information[:birthday],
+          role: User.roles[:student]
         )
 
-        return { student: student } if student.save
+        if user.save
+          student = Student.create!(
+            class_name: class_name,
+            user: user
+          )
 
-        raise GraphQL::ExecutionError, student.errors.full_messages.join(', ')
+          return { student: student } if student.save
+
+          raise GraphQL::ExecutionError, student.errors.full_messages.join(', ')
+        else
+          raise GraphQL::ExecutionError, user.errors.full_messages.join(', ')
+        end
       else
-        raise GraphQL::ExecutionError, user.errors.full_messages.join(', ')
+        raise GraphQL::ExecutionError, 'Permission denied'
       end
     end
   end
