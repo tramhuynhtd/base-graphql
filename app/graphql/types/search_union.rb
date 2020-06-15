@@ -1,5 +1,5 @@
 module Types
-  class UserUnion < Types::BaseUnion
+  class SearchUnion < Types::BaseUnion
     description 'Represents either a Teacher, Student'
     possible_types Types::TeacherType, Types::StudentType
 

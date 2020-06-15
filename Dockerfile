@@ -10,10 +10,12 @@ RUN gem install bundler
 RUN bundle install
 COPY . .
 
+ENV RAILS_ENV production 
 # Init script
-COPY init.sh /
-RUN chmod +x /init.sh
-ENTRYPOINT [ "/init.sh" ]
+# COPY init.sh /
+# RUN chmod +x /init.sh
+# ENTRYPOINT [ "/init.sh" ]
 
 EXPOSE 3011
 EXPOSE 3000
+CMD ["rails", "server", "-b", "0.0.0.0"]

@@ -1,6 +1,6 @@
 module Types
   class TeacherType < Types::BaseObject
-    # implements Types::InformationInterface
+    implements UserInterface
     field :teaching_subject, String, null: false
     field :user, UserType, null: false
   end

@@ -2,15 +2,27 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: 25
+
+development:
+  <<: *default
   host: db
   port: 5432
   username: postgres
   password: db1234
-
-development:
-  <<: *default
   database: base_graphql_development
 
 test:
   <<: *default
+  host: db
+  port: 5432
+  username: postgres
+  password: db1234
   database: base_graphql_test
+
+production:
+  <<: *default
+  database: d1klmak7pu8hrd
+  host: ec2-3-231-16-122.compute-1.amazonaws.com
+  port: 5432
+  username: plqqtkwiiiotsw
+  password: 6646f4647e49bcbaea60d182878f936c56a16195d1816b58c725beb2d244e8be
