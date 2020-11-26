@@ -10,7 +10,9 @@ services:
     volumes:
       - dbpostgres:/var/lib/postgresql/data
   web:
-    build: .
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - "3010:3000"
       - "3012:3011"
@@ -19,4 +21,4 @@ services:
     depends_on:
       - db
 volumes:
-    dbpostgres:
+    dbpostgres: 

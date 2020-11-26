@@ -2,7 +2,7 @@ module Resolvers
   class PostSearch < GraphQL::Schema::Resolver
     argument :filter, Types::PostFilterInput, required: false
 
-    type Types::PostType.connection_type, null: false
+    type Types::PostConnectionCustomType, null: false
 
     def resolve(filter: nil)
       # scope = Post.all.where(del_flag: false).order(title: :desc)

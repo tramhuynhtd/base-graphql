@@ -4,9 +4,9 @@ module Types
     # They will be entry points for queries on your schema.
 
     # field :all_users, UserType.connection_type, null: false
-    # field :all_users, UserConnectionCustomType, null: false, connection: true
+    field :all_users, UserConnectionCustomType, null: false, connection: true
     field :all_teachers_students, [UserInterface], null: false
-    # field :all_posts, Types::PostType.connection_type, null: true
+    field :all_posts, Types::PostType.connection_type, null: true
     # field :all_posts, resolver: Resolvers::PostSearch
     # field :all_posts, PostConnectionCustomType, null: true, connection: true
 
@@ -30,10 +30,11 @@ module Types
       teachers + students
     end
 
-    # def all_users
-    #   # ::Services::AuthorizeRequest.authentication(context)
-    #   User.all
-    # end
+    def all_users
+      # ::Services::AuthorizeRequest.authentication(context)
+      User.all
+    end
+
     def all_teachers_students
       Teacher.all + Student.all
     end

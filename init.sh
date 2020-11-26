@@ -2,9 +2,8 @@
 
 cd /usr/src/app
 
-# bin/rails db:setup
+bin/rails db:setup
 # bin/rails db:migrate # RAILS_ENV=development
-bin/rails db:prepare
 
 rm -f tmp/pids/server.pid
 

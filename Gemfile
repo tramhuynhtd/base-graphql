@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.6'
 
+gem 'rack-cors', :require => 'rack/cors'
+
 gem 'bcrypt', '~> 3.1.13'
 
 gem 'search_object_graphql', '0.3.1'
